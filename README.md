@@ -47,6 +47,17 @@ Plataforma de conexão entre voluntários e pessoas com perda total ou parcial d
 
 Use as teclas `WASD` ou as setas para movimentar Gansel pelo escritório.
 
+## Primeiro enigma em desenvolvimento
+
+Explore o escritório, recolha a gelatina e use-a no relógio. Pressione `E`
+perto de um objeto para interagir, `Enter` para fechar bilhetes e `Esc`
+para pausar. O botão **Recomeçar enigma** restaura a primeira etapa.
+
+Esta versão implementa somente o enigma da gelatina e do relógio.
+Os desafios da impressora e da calculadora ainda serão desenvolvidos.
+As regras têm testes automatizados; a integração visual e física ainda
+precisa de teste no editor Unity. Veja [referências e validação](docs/primeira-melhoria.md).
+
 ## Estrutura do repositório
 
 - `Projeto/Assets`: cena, scripts, arte e áudio do jogo.

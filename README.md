@@ -31,7 +31,7 @@ Plataforma de conexão entre voluntários e pessoas com perda total ou parcial d
 
 ## 🛠 Tecnologias
 
-- Unity 2021.3.17f1 (LTS)
+- Unity 6000.5.3f1 (migração em validação)
 
 - C#
 
@@ -39,7 +39,7 @@ Plataforma de conexão entre voluntários e pessoas com perda total ou parcial d
 
 ## Como executar
 
-1. Instale a Unity `2021.3.17f1` pelo Unity Hub.
+1. Instale a Unity `6000.5.3f1` pelo Unity Hub.
 2. No Unity Hub, selecione **Abrir** e escolha a pasta `Projeto`.
 3. Aguarde a Unity importar os recursos e recriar a pasta `Library`.
 4. Abra a cena `Assets/Scenes/SampleScene.unity`.
@@ -70,3 +70,7 @@ precisa de teste no editor Unity. Veja [referências e validação](docs/primeir
 Pastas geradas pela Unity, como `Library`, `Temp`, `Logs`, `obj` e
 `UserSettings`, não devem ser versionadas. Elas são recriadas ao abrir o
 projeto e podem variar entre computadores.
+
+## Migração para Unity 6
+
+A branch de migração aponta para 6000.5.3f1, mas ainda requer importação, compilação e teste no editor antes de integrar à main. Consulte [o procedimento e as limitações](docs/unity-6000.5.3f1.md).

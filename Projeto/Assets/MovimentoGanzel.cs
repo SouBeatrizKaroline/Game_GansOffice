@@ -26,7 +26,7 @@ public class MovimentoGanzel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb2d.velocity = direcao * velocidade;
+        rb2d.linearVelocity = direcao * velocidade;
     }
 
     private void OnDisable()
@@ -34,7 +34,7 @@ public class MovimentoGanzel : MonoBehaviour
         direcao = Vector2.zero;
         if (rb2d != null)
         {
-            rb2d.velocity = Vector2.zero;
+            rb2d.linearVelocity = Vector2.zero;
         }
     }
 }

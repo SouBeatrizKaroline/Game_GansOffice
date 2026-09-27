@@ -45,4 +45,4 @@ foreach ($reference in @('cafeteira: {fileID: 1614457158}','impressora: {fileID:
     if (-not $scene.Contains($reference)) { throw "Referencia de interacao ausente: $reference" }
 }
 Write-Output 'PASS: sequencia completa, cafe, impressora, resposta vazia, erros, vitoria, derrota e reinicio.'
-Write-Output 'Pendente: compilar e testar fisica, interface e alcance na Unity 2021.3.17f1.'
+Write-Output 'Pendente: compilar e testar fisica, interface e alcance na Unity 6000.5.3f1.'

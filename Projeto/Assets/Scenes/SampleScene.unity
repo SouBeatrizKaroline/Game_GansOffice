@@ -2610,6 +2610,9 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   gelatina: {fileID: 583311865}
   relogio: {fileID: 886158438}
+  cafeteira: {fileID: 1614457158}
+  impressora: {fileID: 670318142}
+  calculadora: {fileID: 1022993350}
   ambiente: {fileID: 536343505}
   cameraJogo: {fileID: 519420031}
   alcance: 1.65

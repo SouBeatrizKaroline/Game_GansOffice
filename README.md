@@ -2,6 +2,25 @@
 
 Jogo 2D criado durante a Women Game Jam 2022.
 
+## Imagens do jogo
+
+### O escritório
+
+![Arte final do escritório de GansOffice, com seis mesas, computadores, impressora, relógio e cafeteira.](Projeto/Assets/Cen%C3%A1rio/Background/Final%20Art/Office%20Background%20with%20sprites_Final%20Art.png)
+
+*Arte final do cenário do jogo.*
+
+<details>
+<summary>Veja também o desenho de construção do cenário</summary>
+
+![Desenho em linhas coloridas do escritório, mostrando a disposição das mesas e dos objetos dos enigmas.](Projeto/Assets/Cen%C3%A1rio/Background/Concept/Office%20Background_with%20sprites_Concept.png)
+
+*Estudo do cenário antes da aplicação de cores e texturas.*
+
+</details>
+
+As imagens são artes originais do projeto; não são capturas da versão atual em execução.
+
 > GansOffice |
 Plataforma de conexão entre voluntários e pessoas com perda total ou parcial da visão, para acesso a ambientes sem acessibilidade, com apoio em descrição de imagens e uso de plataformas.
 

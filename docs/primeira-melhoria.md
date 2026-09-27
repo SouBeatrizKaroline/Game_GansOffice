@@ -1,6 +1,6 @@
 # Primeiro enigma do GansOffice
 
-Esta entrega implementa a gelatina e o relógio na cena existente. É uma primeira etapa, não o jogo completo. A impressora, o café, a calculadora e a saída continuam pendentes.
+Esta entrega começou com a gelatina e o relógio. A continuação conecta os enigmas da impressora com café e da calculadora. A saída é apresentada por texto; elevador, animação final e efeitos ainda não estão integrados.
 
 ## Referências aproveitadas
 
@@ -35,3 +35,18 @@ O editor Unity não foi encontrado no ambiente de desenvolvimento desta entrega.
 8. Teste janela 16:9 e 4:3, perda de foco e botões com mouse.
 
 O protótipo ainda não tem animação dos ponteiros, arremesso animado, sons integrados, salvamento nem suporte a leitor de tela. Não representa uma versão final acessível.
+
+## Continuação: café e calculadora
+
+O relógio libera a coleta de café. A impressora consome uma única xícara e fornece a pista original; a calculadora só aceita respostas depois disso. A resposta `2+9+0` encerra os três enigmas. Cada erro consome uma vida; resposta vazia não consome. Vitória e derrota impedem novas interações, e o reinício limpa todo o progresso.
+
+A calculadora usa como ponto de interação a mesa inferior direita existente, sem importar arte de outro jogo. A interface oferece campo de cinco caracteres, botões numéricos e de operações, limpeza, confirmação por Enter e retorno por Esc. Perda de foco pausa o movimento e preserva a expressão digitada.
+
+Os testes automatizados também cobrem tentativas de pular etapas, duplicação de café, resposta vazia, vitória após erro, três erros, tentativas após derrota e reinício completo. Ainda é necessário validar na Unity:
+
+1. Resolver o relógio, fechar o bilhete e continuar andando.
+2. Visitar a impressora sem café; pegar café, voltar e conferir a pista e o consumo no inventário.
+3. Chegar à mesa inferior direita, abrir a calculadora e usar teclado e botões.
+4. Enviar vazio, errar uma vez e acertar; conferir vidas e conclusão.
+5. Reiniciar, errar três vezes e verificar derrota sem vidas negativas.
+6. Fechar a calculadora com Esc; reabrir; perder foco durante a digitação; continuar e conferir que o personagem não anda enquanto a calculadora está aberta.

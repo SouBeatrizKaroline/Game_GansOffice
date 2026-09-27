@@ -167,7 +167,7 @@ public class PrimeiroEnigma : MonoBehaviour
     private void AtualizarMovimento()
     {
         movimento.enabled = !pausado && !bilhete && !calculadoraAberta && !enigma.Terminou;
-        corpo.velocity = Vector2.zero;
+        corpo.linearVelocity = Vector2.zero;
     }
 
     private void Reiniciar()

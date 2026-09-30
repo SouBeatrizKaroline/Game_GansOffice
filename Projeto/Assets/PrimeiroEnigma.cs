@@ -11,6 +11,13 @@ public class PrimeiroEnigma : MonoBehaviour
     [SerializeField] private SpriteRenderer ambiente;
     [SerializeField] private Camera cameraJogo;
     [SerializeField, Min(0.1f)] private float alcance = 1.65f;
+    [SerializeField] private Sprite[] caminhada;
+    [SerializeField] private Sprite costas;
+    [SerializeField] private Texture2D bodel;
+    [SerializeField] private UnityEngine.Video.VideoClip abertura;
+    [SerializeField] private UnityEngine.Video.VideoClip cinematicFinal;
+    [SerializeField] private AudioClip somRelogio, somImpressora, somFrio, somBotao, somAmbiente;
+    private ApresentacaoGansOffice apresentacao;
 
     private readonly EnigmaRelogio enigma = new EnigmaRelogio();
     private MovimentoGanzel movimento;
@@ -41,12 +48,39 @@ public class PrimeiroEnigma : MonoBehaviour
         inicio = transform.position;
         posicaoGelatina = gelatina.position;
         arteGelatina = gelatina.GetComponent<SpriteRenderer>();
+        apresentacao = gameObject.AddComponent<ApresentacaoGansOffice>();
+        apresentacao.caminhada = caminhada;
+        apresentacao.costas = costas;
+        apresentacao.bodel = bodel;
+        apresentacao.abertura = abertura;
+        apresentacao.final = cinematicFinal;
+        apresentacao.somRelogio = somRelogio;
+        apresentacao.somImpressora = somImpressora;
+        apresentacao.somFrio = somFrio;
+        apresentacao.somBotao = somBotao;
+        apresentacao.somAmbiente = somAmbiente;
         CriarLimites();
+        AtualizarMovimento();
+    }
+
+    private void Start()
+    {
+        if (apresentacao == null) return;
+        apresentacao.TocarAbertura(AtualizarMovimento);
         AtualizarMovimento();
     }
 
     private void Update()
     {
+        if (apresentacao == null) return;
+        apresentacao.AtualizarEstado(enigma);
+        if (apresentacao.Ativa)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) apresentacao.Pausar(!apresentacao.Pausada);
+            if (!apresentacao.Pausada && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)))
+                apresentacao.EncerrarVideo();
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (enigma.Terminou) return;
@@ -122,7 +156,10 @@ public class PrimeiroEnigma : MonoBehaviour
         if (enigma.Concluido && Perto(impressora))
         {
             if (enigma.AbastecerImpressora())
+            {
+                apresentacao.Imprimir();
                 MostrarBilhete("A impressora acordou! Ela imprime: ‘O que o jogo uniu, você precisa separar. O mais é menos e 290 é mais’. O ar-condicionado dispara. Procure a calculadora na mesa inferior direita.");
+            }
             else MostrarBilhete(enigma.ImpressoraResolvida ?
                 "A pista impressa: ‘O que o jogo uniu, você precisa separar. O mais é menos e 290 é mais’." :
                 "A impressora está sem tinta. Um bilhete diz: ‘Só o café faz acordar a vida’. Será que ela também precisa de uma xícara?");
@@ -149,9 +186,12 @@ public class PrimeiroEnigma : MonoBehaviour
         {
             if (enigma.PararRelogio())
             {
-                gelatina.position = relogio.position + new Vector3(0f, -0.12f, -0.1f);
-                arteGelatina.enabled = true;
-                MostrarBilhete("A gelatina grudou no relógio. O tempo parou! A impressora está apitando. Vá investigar.");
+                apresentacao.Arremessar(gelatina, relogio.position + new Vector3(0f, -0.12f, -0.1f), () =>
+                {
+                    apresentacao.Imprimir();
+                    MostrarBilhete("A gelatina grudou no relógio. O tempo parou! A impressora está apitando. Vá investigar.");
+                });
+                AtualizarMovimento();
             }
             else MostrarBilhete(enigma.Concluido ? "O tempo está parado. Investigue a impressora." : "O relógio anda ao contrário. Só uma coisa estranha pode acabar com algo assim...");
         }
@@ -166,12 +206,15 @@ public class PrimeiroEnigma : MonoBehaviour
 
     private void AtualizarMovimento()
     {
-        movimento.enabled = !pausado && !bilhete && !calculadoraAberta && !enigma.Terminou;
+        movimento.enabled = !pausado && !bilhete && !calculadoraAberta && !enigma.Terminou &&
+            (apresentacao == null || !apresentacao.Ativa);
+        if (apresentacao != null) apresentacao.Pausar(pausado);
         corpo.linearVelocity = Vector2.zero;
     }
 
     private void Reiniciar()
     {
+        apresentacao.Reiniciar();
         enigma.Reiniciar();
         calculadoraAberta = false;
         resposta = string.Empty;
@@ -187,6 +230,7 @@ public class PrimeiroEnigma : MonoBehaviour
     {
         if (!foco && movimento != null)
         {
+            if (apresentacao != null && apresentacao.Ativa) { apresentacao.Pausar(true); return; }
             pausado = true;
             AtualizarMovimento();
         }
@@ -208,16 +252,25 @@ public class PrimeiroEnigma : MonoBehaviour
 
     private void OnGUI()
     {
+        if (apresentacao == null) return;
+        if (apresentacao.Ativa) { apresentacao.DesenharVideo(); return; }
         PrepararEstilos();
         Matrix4x4 anterior = GUI.matrix;
         float escala = Mathf.Min(Screen.width / 1100f, Screen.height / 760f);
         GUI.matrix = Matrix4x4.TRS(new Vector3((Screen.width - 1100f * escala) / 2f,
             (Screen.height - 760f * escala) / 2f, 0f), Quaternion.identity, Vector3.one * escala);
 
+        if (enigma.ImpressoraResolvida && !enigma.Escapou)
+        {
+            Color cor = GUI.color;
+            GUI.color = new Color(0.3f, 0.65f, 1f, (3 - enigma.Vidas) * 0.09f);
+            GUI.DrawTexture(new Rect(0, 0, 1100, 760), Texture2D.whiteTexture);
+            GUI.color = cor;
+        }
         Painel(new Rect(20, 10, 1060, 102));
         GUI.Label(new Rect(38, 18, 760, 34), "GANSOFFICE  /  O tempo está ao contrário", titulo);
         string objetivo = enigma.Terminou ? "Use Recomeçar para jogar novamente." :
-            enigma.ImpressoraResolvida ? "Objetivo: resolva a calculadora na mesa inferior direita. Vidas: " + enigma.Vidas :
+            enigma.ImpressoraResolvida ? "Objetivo: resolva a calculadora. Vidas: " + enigma.Vidas + "  /  Temperatura: " + enigma.Temperatura + " °C" :
             enigma.TemCafe ? "Objetivo: leve o café até a impressora." :
             enigma.Concluido ? "Objetivo: investigue a impressora e procure café." :
             enigma.TemGelatina ? "Objetivo: leve a gelatina até o relógio." : "Objetivo: explore o escritório. Encontre a gelatina.";
@@ -236,7 +289,10 @@ public class PrimeiroEnigma : MonoBehaviour
             Painel(new Rect(200, 214, 700, 330));
             GUI.Label(new Rect(228, 234, 644, 42), pausado ? "Pausa para o café" :
                 enigma.Escapou ? "Escritório resolvido!" : enigma.Terminou ? "Frio demais!" : "Um bilhete para Gander", titulo);
-            GUI.Label(new Rect(228, 288, 644, 172), pausado ? "O escritório pode esperar. Continue quando quiser." : mensagem, texto);
+            bool mostrarBodel = enigma.Escapou && bodel != null;
+            if (mostrarBodel) GUI.DrawTexture(new Rect(230, 285, 120, 172), bodel, ScaleMode.ScaleToFit);
+            GUI.Label(mostrarBodel ? new Rect(370, 288, 500, 172) : new Rect(228, 288, 644, 172),
+                pausado ? "O escritório pode esperar. Continue quando quiser." : mensagem, texto);
             if (!enigma.Terminou && GUI.Button(new Rect(228, 468, 304, 52), "Continuar [Enter]", botao))
             {
                 pausado = false;
@@ -260,7 +316,7 @@ public class PrimeiroEnigma : MonoBehaviour
         for (int i = 0; i < teclas.Length; i++)
         {
             if (GUI.Button(new Rect(228 + (i % 7) * 92, 354 + (i / 7) * 50, 84, 42), teclas[i].ToString(), botao) && resposta.Length < 5)
-                resposta += teclas[i];
+            { resposta += teclas[i]; apresentacao.Tecla(); }
         }
         bool enviar = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return;
         if (enviar) Event.current.Use();
@@ -269,7 +325,14 @@ public class PrimeiroEnigma : MonoBehaviour
             if (string.IsNullOrWhiteSpace(resposta)) return;
             bool acertou = enigma.ResolverCalculadora(resposta);
             calculadoraAberta = false;
-            MostrarBilhete(acertou ? "A temperatura estabilizou e a porta destrancou! Você resolveu os três enigmas. Bodel espera no elevador. A transição para a cena final será integrada em uma próxima versão." :
+            if (acertou)
+            {
+                bilhete = false;
+                apresentacao.TocarFinal(() => MostrarBilhete("Bodel, o ascensorista: ‘Sair da caixa é o que move a humanidade. E se esse jogo fosse de verdade?’\n\nA temperatura voltou a 29 °C. Você escapou do escritório!"));
+                AtualizarMovimento();
+                return;
+            }
+            MostrarBilhete(
                 enigma.Terminou ? "O gato tem sete vidas e você tem três. O escritório congelou! Recomece e pense fora da caixa." :
                 "Ficou mais frio! Vidas restantes: " + enigma.Vidas + ". Volte à calculadora e tente separar os algarismos de 290.");
         }

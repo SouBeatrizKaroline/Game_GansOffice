@@ -2616,3 +2616,22 @@ MonoBehaviour:
   ambiente: {fileID: 536343505}
   cameraJogo: {fileID: 519420031}
   alcance: 1.65
+  caminhada:
+  - {fileID: 21300000, guid: 32d90a54c551c8849b1f6a7a83d5697b, type: 3}
+  - {fileID: 21300000, guid: 3326c3925cc670f42b1c938f88550e1e, type: 3}
+  - {fileID: 21300000, guid: 52ed78ac5982ab04697a699d645d5b9e, type: 3}
+  - {fileID: 21300000, guid: 03c178dd18f39c64b87c5cfa509dd996, type: 3}
+  - {fileID: 21300000, guid: f76bcdcd8feb16f468723e71545f988c, type: 3}
+  - {fileID: 21300000, guid: 7139f1c3c8532c846b5cdb1506a0511c, type: 3}
+  - {fileID: 21300000, guid: 978e4250136bf024c94d57f780a7506b, type: 3}
+  - {fileID: 21300000, guid: e3e972e9d95e851498581dc498512d89, type: 3}
+  - {fileID: 21300000, guid: 1d826ad88f46ae3489726950010ff6a1, type: 3}
+  costas: {fileID: 21300000, guid: d8bcc430a70e7ea4381423814769dab3, type: 3}
+  abertura: {fileID: 32900000, guid: 818593e412df75546a1d5747d05f5729, type: 3}
+  somImpressora: {fileID: 8300000, guid: b48567a0d3970c14981f1319fd2b5cdb, type: 3}
+  cinematicFinal: {fileID: 32900000, guid: 632de68b1602a8d488356424c5b50bcd, type: 3}
+  somBotao: {fileID: 8300000, guid: 9a3e551f02a3f4645893bc3824d5e844, type: 3}
+  somAmbiente: {fileID: 8300000, guid: e5c5b399971067340b7357f1bac6e917, type: 3}
+  somRelogio: {fileID: 8300000, guid: 8e466ab6c26e8c2448e738b5797b3fc2, type: 3}
+  somFrio: {fileID: 8300000, guid: a65a0f66f69682b43b838406e997a638, type: 3}
+  bodel: {fileID: 2800000, guid: 7da7c51eb6692c64eb3fa268db714c48, type: 3}

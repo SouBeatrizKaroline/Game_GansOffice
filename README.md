@@ -1,106 +1,212 @@
+<div align="center">
+
 # GansOffice
 
-Jogo 2D criado durante a Women Game Jam 2022.
+### O expediente acabou. O absurdo está só começando.
 
-## Baixar e jogar no Windows
+Uma aventura 2D de enigmas, humor e escolhas improváveis —  
+com um ganso, um escritório vazio e um relógio que insiste em voltar no tempo.
 
-[**Baixar GansOffice para Windows 64 bits — alpha (93 MB)**](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/download/v0.2.0-alpha-windows/GansOffice-Windows.zip)
+**[JOGAR NO WINDOWS](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/download/v0.2.0-alpha-windows/GansOffice-Windows.zip)** · **[VER A VERSÃO ALPHA](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/tag/v0.2.0-alpha-windows)** · **[ACOMPANHAR O DESENVOLVIMENTO](https://youtube.com/playlist?list=PL1ldPEBU1lB_gMV2i_xQnkE9h1vJhogAa)**
 
-1. Baixe o ZIP e extraia a pasta inteira.
-2. Abra **GansOffice.exe**. Mantenha as pastas e DLLs junto do executável.
-3. Use **WASD/setas** para mover, **E** para interagir, **Enter** para confirmar/pular vídeos e **Esc** para pausar. **Alt+F4** fecha o jogo.
+**Puzzle narrativo** · **Arte 2D original** · **Windows 64 bits** · **Unity + C#** · **Em desenvolvimento**
 
-Não é necessário instalar a Unity para jogar. Veja as [notas da versão](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/tag/v0.2.0-alpha-windows) e [como gerar o executável](docs/build-windows.md).
+</div>
 
-Esta versão de teste teve compilação e inicialização com Direct3D 11 verificadas; a partida completa ainda precisa de teste manual.
+---
 
-## Imagens do jogo
+![Arte original do escritório de GansOffice: mesas, computadores e objetos que escondem os enigmas da aventura.](Projeto/Assets/Cen%C3%A1rio/Background/Final%20Art/Office%20Background%20with%20sprites_Final%20Art.png)
 
-### O escritório
+<div align="center">
+<sub>Arte original do cenário. A imagem apresenta a direção visual do projeto; não é uma captura do aplicativo em execução.</sub>
+</div>
 
-![Arte final do escritório de GansOffice, com seis mesas, computadores, impressora, relógio e cafeteira.](Projeto/Assets/Cen%C3%A1rio/Background/Final%20Art/Office%20Background%20with%20sprites_Final%20Art.png)
+## Um escritório comum. Uma saída nada óbvia.
 
-*Arte final do cenário do jogo.*
+Gander tem um talento especial para dormir no trabalho. Ao acordar, encontra o escritório deserto, um bilhete misterioso e o tempo andando ao contrário. Para sair, terá que transformar objetos cotidianos em soluções que ninguém colocaria em um manual corporativo.
+
+Em **GansOffice**, observar faz parte do jogo. Bilhetes escondem pistas, objetos desafiam a lógica e cada descoberta abre a próxima etapa de uma pequena aventura sobre pensar fora da caixa.
+
+> **Uma gelatina. Uma impressora. Uma calculadora.  
+> O que você faria para encerrar esse expediente?**
+
+## Por que conhecer GansOffice?
+
+| O que define o jogo | O que isso traz à experiência |
+| :--- | :--- |
+| **Humor de escritório com lógica surreal** | Situações familiares ganham respostas inesperadas e charadas com personalidade. |
+| **Personagens animais e arte original** | Gander e o universo SixDuck dão identidade própria à história e à apresentação visual. |
+| **Enigmas conectados à narrativa** | Exploração, pistas e interações conduzem a progressão, em vez de desafios isolados. |
+| **Consequências visíveis** | Erros alteram o frio do ambiente e consomem vidas; acertar permite avançar. |
+| **Origem em uma game jam** | Criado na Women Game Jam 2022, o projeto continua sendo desenvolvido por Beatriz Karoline. |
+
+O universo SixDuck reúne personagens com trajetórias e identidades diversas. A alpha se concentra na aventura de Gander; histórias e personagens adicionais pertencem ao material narrativo do projeto e oferecem caminhos para uma futura expansão.
+
+## Jogue a alpha
+
+### Download para Windows
+
+**[⬇ Baixar GansOffice — Windows 64 bits, alpha · aproximadamente 93 MB](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/download/v0.2.0-alpha-windows/GansOffice-Windows.zip)**
+
+1. Baixe o ZIP e **extraia a pasta inteira**.
+2. Abra **GansOffice.exe**.
+3. Mantenha `GansOffice_Data`, `MonoBleedingEdge` e as DLLs junto do executável.
+
+**Você não precisa instalar a Unity para jogar.** Esta distribuição é para Windows 64 bits; requisitos mínimos de hardware ainda não foram estabelecidos por testes em diferentes computadores.
+
+| Controle | Ação |
+| :--- | :--- |
+| **WASD / setas** | Movimentar Gander |
+| **E** | Interagir com objetos próximos |
+| **Enter** | Confirmar, fechar bilhetes ou pular vídeos |
+| **Esc** | Pausar, continuar ou voltar |
+| **Alt + F4** | Fechar o jogo |
+
+**Sua experiência ajuda a orientar a próxima versão.** Encontrou um problema ou quer compartilhar uma sugestão? [Abra uma issue](https://github.com/SouBeatrizKaroline/Game_GansOffice/issues), informando o que aconteceu, como reproduzir e, se possível, sua versão do Windows.
+
+## O que já está nesta versão?
+
+- **Três enigmas em sequência**, com exploração do escritório, coleta de itens e pistas.
+- **Gander animado**, com nove quadros originais de caminhada, espelhamento e vista de costas.
+- **Arremesso da gelatina**, com trajetória em arco e vibração ao atingir o relógio.
+- **Inventário e interação por proximidade**, com teclado e botões na interface.
+- **Calculadora interativa**, três vidas e efeitos de frio a cada resposta errada.
+- **Sons do escritório**, incluindo relógio, impressora e ar-condicionado.
+- **Vídeos originais de abertura e encerramento**, com retrato e fala de Bodel no final.
+- **Pausa, reinício e tratamento da perda de foco**, além da opção de pular vídeos.
+
+### Transparência sobre a alpha
+
+A versão foi **compilada na Unity 6000.5.3f1**. A importação das referências da cena e a inicialização do aplicativo com **Direct3D 11** foram verificadas; os testes automatizados das regras passaram.
+
+A partida completa ainda precisa de teste manual, incluindo colisões, legibilidade, sequência de interações e reprodução do final. Os vídeos originais podem gerar um aviso de timestamps que a Unity ajusta durante a reprodução. Suporte a leitor de tela e uma validação completa de acessibilidade ainda não estão implementados.
+
+Consulte as [notas da versão](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/tag/v0.2.0-alpha-windows) para os detalhes do pacote.
+
+## Para empresas, publishers e possíveis investidores
+
+**GansOffice apresenta uma proposta clara: uma aventura de enigmas com humor, arte autoral e um universo de personagens que pode crescer.** A alpha permite conhecer a direção do projeto e avaliar sua base jogável.
+
+| Aspecto | Situação atual |
+| :--- | :--- |
+| **Proposta criativa** | Puzzle narrativo em um escritório surreal, protagonizado por animais. |
+| **Entrega disponível** | Alpha Windows com três enigmas, animações e encerramento integrado. |
+| **Base de produção** | Projeto Unity em C#, recursos originais e testes das regras de progressão. |
+| **Possibilidades de expansão** | Personagens e histórias adicionais já descritos nos roteiros; implementação futura a definir. |
+| **Próxima etapa** | Testes completos com jogadores, ajustes da experiência e definição do escopo de evolução. |
+
+O projeto pode ser apresentado para conversas sobre **publicação, apoio à produção, colaboração artística e desenvolvimento**. Escopo, orçamento, cronograma e condições comerciais devem ser definidos em uma proposta específica; este repositório não apresenta projeções de receita ou métricas de mercado validadas.
+
+**Para uma primeira conversa:** entre em contato pelo [perfil de Beatriz Karoline no GitHub](https://github.com/SouBeatrizKaroline). Sugestões públicas sobre o projeto também podem ser registradas nas [issues](https://github.com/SouBeatrizKaroline/Game_GansOffice/issues).
+
+## Próximos passos
+
+As prioridades de evolução abaixo são uma direção de trabalho, sem datas de entrega definidas:
+
+- **Validar a experiência completa:** testar os três enigmas, vitória, derrota e reinício com jogadores.
+- **Refinar a apresentação:** revisar colisões, enquadramento, interface, áudio e transições.
+- **Aprofundar as animações:** avaliar os ponteiros do relógio e novas reações dos objetos.
+- **Planejar acessibilidade:** definir recursos e critérios de teste antes de afirmar suporte.
+- **Dimensionar a expansão:** selecionar novos personagens e histórias de acordo com o escopo de produção.
+
+## Bastidores e direção de arte
+
+**[▶ Lives de desenvolvimento no YouTube](https://youtube.com/playlist?list=PL1ldPEBU1lB_gMV2i_xQnkE9h1vJhogAa)** · **[Página do projeto no itch.io](https://soubeatrizkaroline.itch.io/gansoffice)**
+
+O pacote Windows desta alpha está no GitHub Releases. A página do itch.io permanece como outro canal do projeto e não foi atualizada com esse pacote.
 
 <details>
-<summary>Veja também o desenho de construção do cenário</summary>
+<summary><strong>Veja o estudo original do escritório</strong></summary>
 
-![Desenho em linhas coloridas do escritório, mostrando a disposição das mesas e dos objetos dos enigmas.](Projeto/Assets/Cen%C3%A1rio/Background/Concept/Office%20Background_with%20sprites_Concept.png)
+![Estudo do escritório em linhas coloridas, mostrando mesas e objetos antes da aplicação de cores e texturas.](Projeto/Assets/Cen%C3%A1rio/Background/Concept/Office%20Background_with%20sprites_Concept.png)
 
-*Estudo do cenário antes da aplicação de cores e texturas.*
+Do estudo à arte final: a disposição do escritório sustenta a exploração e os objetos dos enigmas.
 
 </details>
 
-As imagens são artes originais do projeto; não são capturas da versão atual em execução.
+## Informações técnicas
 
-> GansOffice |
-Plataforma de conexão entre voluntários e pessoas com perda total ou parcial da visão, para acesso a ambientes sem acessibilidade, com apoio em descrição de imagens e uso de plataformas.
+| Item | Configuração |
+| :--- | :--- |
+| **Engine** | Unity `6000.5.3f1` |
+| **Linguagem** | C# |
+| **Distribuição atual** | Windows 64 bits, backend Mono |
+| **Apresentação** | Jogo 2D, renderização Built-in |
+| **Movimento e colisão** | Rigidbody2D e colliders 2D |
+| **Entrada** | Input Manager legado: teclado e interação pela interface |
+| **Interface** | IMGUI |
+| **Vídeos e áudio** | VideoPlayer e AudioSource |
+| **Janela do build** | 1280 × 720, redimensionável |
+| **Versionamento** | Git e GitHub |
 
-## Equipe de Criação (Women Game Jam 2022)
+<details>
+<summary><strong>Abrir o projeto e gerar o executável</strong></summary>
 
-> Alana Freitas - Game Designer 
+1. Instale e ative a Unity `6000.5.3f1` pelo Unity Hub.
+2. Selecione **Abrir** e escolha a pasta `Projeto`.
+3. Aguarde a importação dos recursos.
+4. Abra `Assets/Scenes/SampleScene.unity` e pressione **Play**.
+5. Para gerar a versão Windows, use **GansOffice → Gerar versão Windows**.
 
-> Ana Carolina - Designer de Narrativas
+A saída padrão fica em `Projeto/Builds/Windows`. O processo confere as referências da cena antes de gerar o aplicativo.
 
-> Ana Marcello - Desenvolvedora
+Veja o [guia de compilação Windows](docs/build-windows.md) para execução pela linha de comando, configuração da saída e verificações realizadas.
 
-> Beatriz Karoline - Designer de Narrativas 
+</details>
 
-> Diana Imaizumi - Artista e animadora 2D
+<details>
+<summary><strong>Estrutura e testes</strong></summary>
 
-> Gabrielle Bocal - Artista e animadora 2D
+| Caminho | Conteúdo |
+| :--- | :--- |
+| `Projeto/Assets` | Cena, scripts, personagens, cenário, sons, vídeos e roteiros |
+| `Projeto/Assets/Editor` | Script de compilação Windows |
+| `Projeto/Packages` | Dependências da Unity |
+| `Projeto/ProjectSettings` | Configurações do projeto |
+| `Tests` | Testes das regras e verificações das referências |
+| `docs` | Implementação, validação e instruções de compilação |
 
-## Em desenvolvimento atualmente por
+Execute os testes em processos separados:
 
-- Beatriz Karoline
+```powershell
+pwsh -NoProfile -File Tests/PrimeiroEnigma.Tests.ps1
+pwsh -NoProfile -File Tests/UnityMigration.Tests.ps1
+pwsh -NoProfile -File Tests/Apresentacao.Tests.ps1
+```
 
-> Projeto sendo desenvolvido em lives no YouTube
+Os testes verificam progressão, coleta de itens, vidas, vitória, derrota, reinício, temperatura e referências serializadas. Eles complementam a compilação Unity e os testes manuais.
 
-- [🔗 Assista Aqui](https://youtube.com/playlist?list=PL1ldPEBU1lB_gMV2i_xQnkE9h1vJhogAa)
+Pastas geradas, como `Library`, `Temp`, `Logs`, `obj` e `UserSettings`, não devem ser versionadas.
 
-- [🔗 Página do projeto no itch.io](https://soubeatrizkaroline.itch.io/gansoffice)
+**Documentação:** [enigmas e referências](docs/primeira-melhoria.md) · [animações e validação](docs/animacoes-e-final.md) · [build Windows](docs/build-windows.md) · [migração Unity](docs/unity-6000.5.3f1.md).
 
-## 🛠 Tecnologias
+</details>
 
-- Unity 6000.5.3f1 (compilação Windows validada)
+## Quem faz GansOffice
 
-- C#
+### Equipe original · Women Game Jam 2022
 
-- Git e GitHub
+| Pessoa | Contribuição |
+| :--- | :--- |
+| Alana Freitas | Game design |
+| Ana Carolina | Design de narrativas |
+| Ana Marcello | Desenvolvimento |
+| Beatriz Karoline | Design de narrativas |
+| Diana Imaizumi | Arte e animação 2D |
+| Gabrielle Bocal | Arte e animação 2D |
 
-## Abrir o projeto na Unity
+**Desenvolvimento atual:** [Beatriz Karoline](https://github.com/SouBeatrizKaroline).
 
-1. Instale a Unity `6000.5.3f1` pelo Unity Hub.
-2. No Unity Hub, selecione **Abrir** e escolha a pasta `Projeto`.
-3. Aguarde a Unity importar os recursos e recriar a pasta `Library`.
-4. Abra a cena `Assets/Scenes/SampleScene.unity`.
-5. Pressione **Play**.
+O repositório inclui um arquivo [LICENSE](LICENSE). Consulte-o e preserve os créditos da equipe ao reutilizar ou distribuir o projeto.
 
-Use as teclas `WASD` ou as setas para movimentar Gander pelo escritório.
+---
 
-## Três enigmas em desenvolvimento
+<div align="center">
 
-Explore o escritório, recolha a gelatina e use-a no relógio. Pressione `E`
-perto de um objeto para interagir, `Enter` para fechar bilhetes e `Esc`
-para pausar. O botão **Recomeçar enigma** restaura a primeira etapa.
+### Pronto para pensar fora da caixa?
 
-Depois do relógio, investigue a impressora e use o café da cafeteira.
-A pista impressa leva à calculadora da mesa inferior direita. Digite a
-expressão ou use os botões; cada resposta errada consome uma das três vidas.
-Resolver a charada conclui o protótipo; errar três vezes permite recomeçar.
-A abertura e a cinematic final estão conectadas, com retrato e fala de Bodel. Gander usa os quadros originais de caminhada; a gelatina tem arremesso animado, e erros na calculadora ativam efeitos de frio e temperatura.
-As regras têm testes automatizados. O projeto compilou na Unity e iniciou com Direct3D 11; a partida completa e a integração visual e física ainda precisam de teste manual. Veja [referências dos enigmas](docs/primeira-melhoria.md) e [animações, limitações e validação](docs/animacoes-e-final.md).
+**[Baixe a alpha e entre no escritório](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/download/v0.2.0-alpha-windows/GansOffice-Windows.zip)**
 
-## Estrutura do repositório
+<sub>GansOffice · Criado na Women Game Jam 2022 · Em desenvolvimento por Beatriz Karoline</sub>
 
-- `Projeto/Assets`: cena, scripts, arte e áudio do jogo.
-- `Projeto/Packages`: dependências da Unity.
-- `Projeto/ProjectSettings`: configurações do projeto.
-
-Pastas geradas pela Unity, como `Library`, `Temp`, `Logs`, `obj` e
-`UserSettings`, não devem ser versionadas. Elas são recriadas ao abrir o
-projeto e podem variar entre computadores.
-
-## Migração para Unity 6
-
-O projeto foi importado e compilado para Windows na Unity 6000.5.3f1. A inicialização com Direct3D 11 foi conferida; a validação completa da partida permanece pendente. Consulte [o procedimento e as limitações](docs/unity-6000.5.3f1.md).
+</div>

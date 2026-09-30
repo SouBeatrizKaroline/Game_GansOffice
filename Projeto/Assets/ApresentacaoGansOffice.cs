@@ -44,6 +44,8 @@ public sealed class ApresentacaoGansOffice : MonoBehaviour
         video.isLooping = false;
         video.renderMode = VideoRenderMode.RenderTexture;
         video.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        video.controlledAudioTrackCount = 1;
+        video.EnableAudioTrack(0, true);
         video.SetTargetAudioSource(0, audioVideo);
         video.loopPointReached += AoTerminarVideo;
         video.errorReceived += AoFalharVideo;

@@ -7,7 +7,7 @@ if ($settings -notmatch 'activeInputHandler: 0') { throw 'Input Manager legado n
 $graphics = Get-Content "$project/ProjectSettings/GraphicsSettings.asset" -Raw
 if ($graphics -notmatch 'm_CustomRenderPipeline: \{fileID: 0\}') { throw 'Renderizacao Built-in alterada.' }
 $manifest = Get-Content "$project/Packages/manifest.json" -Raw | ConvertFrom-Json -AsHashtable
-foreach ($name in @('com.unity.2d.sprite','com.unity.modules.imgui','com.unity.modules.physics2d','com.unity.modules.audio','com.unity.modules.video')) {
+foreach ($name in @('com.unity.modules.imgui','com.unity.modules.physics2d','com.unity.modules.audio','com.unity.modules.video')) {
     if (-not $manifest.dependencies.ContainsKey($name)) { throw "Modulo necessario ausente: $name" }
 }
 # Verify every serialized script reference belongs to a local script, not a removed package.

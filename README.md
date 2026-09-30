@@ -76,9 +76,9 @@ Depois do relógio, investigue a impressora e use o café da cafeteira.
 A pista impressa leva à calculadora da mesa inferior direita. Digite a
 expressão ou use os botões; cada resposta errada consome uma das três vidas.
 Resolver a charada conclui o protótipo; errar três vezes permite recomeçar.
-A transição para o elevador e a animação final ainda não estão integradas.
+A abertura e a cinematic final estão conectadas, com retrato e fala de Bodel. Gander usa os quadros originais de caminhada; a gelatina tem arremesso animado, e erros na calculadora ativam efeitos de frio e temperatura.
 As regras têm testes automatizados; a integração visual e física ainda
-precisa de teste no editor Unity. Veja [referências e validação](docs/primeira-melhoria.md).
+precisa de teste no editor Unity. Veja [referências dos enigmas](docs/primeira-melhoria.md) e [animações, limitações e validação](docs/animacoes-e-final.md).
 
 ## Estrutura do repositório
 

@@ -7,6 +7,7 @@ public sealed class EnigmaRelogio
     public bool ImpressoraResolvida { get; private set; }
     public bool Escapou { get; private set; }
     public int Vidas { get; private set; } = 3;
+    public int Temperatura { get { return Escapou ? 29 : ImpressoraResolvida ? 15 - (3 - Vidas) * 5 : 29; } }
     public bool Terminou { get { return Escapou || Vidas == 0; } }
 
     public bool PegarCafe()

@@ -2,6 +2,18 @@
 
 Jogo 2D criado durante a Women Game Jam 2022.
 
+## Baixar e jogar no Windows
+
+[**Baixar GansOffice para Windows 64 bits — alpha (93 MB)**](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/download/v0.2.0-alpha-windows/GansOffice-Windows.zip)
+
+1. Baixe o ZIP e extraia a pasta inteira.
+2. Abra **GansOffice.exe**. Mantenha as pastas e DLLs junto do executável.
+3. Use **WASD/setas** para mover, **E** para interagir, **Enter** para confirmar/pular vídeos e **Esc** para pausar. **Alt+F4** fecha o jogo.
+
+Não é necessário instalar a Unity para jogar. Veja as [notas da versão](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/tag/v0.2.0-alpha-windows) e [como gerar o executável](docs/build-windows.md).
+
+Esta versão de teste teve compilação e inicialização com Direct3D 11 verificadas; a partida completa ainda precisa de teste manual.
+
 ## Imagens do jogo
 
 ### O escritório
@@ -46,17 +58,17 @@ Plataforma de conexão entre voluntários e pessoas com perda total ou parcial d
 
 - [🔗 Assista Aqui](https://youtube.com/playlist?list=PL1ldPEBU1lB_gMV2i_xQnkE9h1vJhogAa)
 
-- [🔗 Baixar Versão Atual](https://soubeatrizkaroline.itch.io/gansoffice)
+- [🔗 Página do projeto no itch.io](https://soubeatrizkaroline.itch.io/gansoffice)
 
 ## 🛠 Tecnologias
 
-- Unity 6000.5.3f1 (migração em validação)
+- Unity 6000.5.3f1 (compilação Windows validada)
 
 - C#
 
 - Git e GitHub
 
-## Como executar
+## Abrir o projeto na Unity
 
 1. Instale a Unity `6000.5.3f1` pelo Unity Hub.
 2. No Unity Hub, selecione **Abrir** e escolha a pasta `Projeto`.
@@ -64,7 +76,7 @@ Plataforma de conexão entre voluntários e pessoas com perda total ou parcial d
 4. Abra a cena `Assets/Scenes/SampleScene.unity`.
 5. Pressione **Play**.
 
-Use as teclas `WASD` ou as setas para movimentar Gansel pelo escritório.
+Use as teclas `WASD` ou as setas para movimentar Gander pelo escritório.
 
 ## Três enigmas em desenvolvimento
 
@@ -77,8 +89,7 @@ A pista impressa leva à calculadora da mesa inferior direita. Digite a
 expressão ou use os botões; cada resposta errada consome uma das três vidas.
 Resolver a charada conclui o protótipo; errar três vezes permite recomeçar.
 A abertura e a cinematic final estão conectadas, com retrato e fala de Bodel. Gander usa os quadros originais de caminhada; a gelatina tem arremesso animado, e erros na calculadora ativam efeitos de frio e temperatura.
-As regras têm testes automatizados; a integração visual e física ainda
-precisa de teste no editor Unity. Veja [referências dos enigmas](docs/primeira-melhoria.md) e [animações, limitações e validação](docs/animacoes-e-final.md).
+As regras têm testes automatizados. O projeto compilou na Unity e iniciou com Direct3D 11; a partida completa e a integração visual e física ainda precisam de teste manual. Veja [referências dos enigmas](docs/primeira-melhoria.md) e [animações, limitações e validação](docs/animacoes-e-final.md).
 
 ## Estrutura do repositório
 
@@ -92,4 +103,4 @@ projeto e podem variar entre computadores.
 
 ## Migração para Unity 6
 
-A branch de migração aponta para 6000.5.3f1, mas ainda requer importação, compilação e teste no editor antes de integrar à main. Consulte [o procedimento e as limitações](docs/unity-6000.5.3f1.md).
+O projeto foi importado e compilado para Windows na Unity 6000.5.3f1. A inicialização com Direct3D 11 foi conferida; a validação completa da partida permanece pendente. Consulte [o procedimento e as limitações](docs/unity-6000.5.3f1.md).

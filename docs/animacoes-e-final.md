@@ -38,11 +38,9 @@ pwsh -NoProfile -File Tests/UnityMigration.Tests.ps1
 pwsh -NoProfile -File Tests/Apresentacao.Tests.ps1
 ```
 
-Estes testes compilam as regras e verificam os recursos serializados; não
-compilam os componentes Unity. O editor não está instalado neste ambiente.
-A publicação é uma proposta de código, não um novo build jogável no itch.io.
+Estes testes compilam as regras e verificam os recursos serializados. A Unity 6000.5.3f1 foi instalada depois desta implementação: os componentes compilaram, as referências foram importadas e a versão Windows iniciou com Direct3D 11. A partida completa ainda precisa de teste manual. Veja [download e compilação Windows](build-windows.md). O build foi publicado no GitHub Releases; a página do itch.io não foi atualizada.
 
-Antes de integrar, abra `Projeto` na Unity 6000.5.3f1 e verifique:
+Para completar a validação, abra `Projeto` na Unity 6000.5.3f1 e verifique:
 
 1. Importe sem erros; reproduza a abertura, pause, retome e pule.
 2. Ande em todas as direções; confira escala, pivôs, pose parada e colisões.
@@ -57,3 +55,4 @@ Antes de integrar, abra `Projeto` na Unity 6000.5.3f1 e verifique:
 
 Não houve análise integral das lives no YouTube: a playlist não carregou
 neste ambiente. A implementação se apoia nos roteiros, arte e vídeos locais.
+

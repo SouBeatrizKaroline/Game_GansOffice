@@ -83,6 +83,8 @@ A partida completa ainda precisa de teste manual, incluindo colisões, legibilid
 
 Consulte as [notas da versão](https://github.com/SouBeatrizKaroline/Game_GansOffice/releases/tag/v0.2.0-alpha-windows) para os detalhes do pacote.
 
+O código atual recebeu correções de pausa, perda de foco, telas finais e retomada de pistas, com **12 cenários automatizados aprovados no Play Mode**. Consulte o [relatório de QA de 1 de outubro de 2026](docs/qa-2026-10-01.md) para resultados e limites da validação. O pacote alpha de download acima é anterior a essas correções.
+
 ## Para empresas, publishers e possíveis investidores
 
 **GansOffice apresenta uma proposta clara: uma aventura de enigmas com humor, arte autoral e um universo de personagens que pode crescer.** A alpha permite conhecer a direção do projeto e avaliar sua base jogável.

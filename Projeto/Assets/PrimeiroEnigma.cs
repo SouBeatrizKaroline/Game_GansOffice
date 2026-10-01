@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(MovimentoGanzel), typeof(Rigidbody2D))]
+[RequireComponent(typeof(MovimentoGanzel), typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class PrimeiroEnigma : MonoBehaviour
 {
     [SerializeField] private Transform gelatina;
@@ -39,15 +39,21 @@ public class PrimeiroEnigma : MonoBehaviour
     {
         movimento = GetComponent<MovimentoGanzel>();
         corpo = GetComponent<Rigidbody2D>();
+        arteGelatina = gelatina != null ? gelatina.GetComponent<SpriteRenderer>() : null;
         if (gelatina == null || relogio == null || ambiente == null || cameraJogo == null || cafeteira == null || impressora == null || calculadora == null)
         {
             Debug.LogError("PrimeiroEnigma: configure as referências da cena.", this);
             enabled = false;
             return;
         }
+        if (arteGelatina == null)
+        {
+            Debug.LogError("PrimeiroEnigma: a gelatina precisa de um SpriteRenderer.", this);
+            enabled = false;
+            return;
+        }
         inicio = transform.position;
         posicaoGelatina = gelatina.position;
-        arteGelatina = gelatina.GetComponent<SpriteRenderer>();
         apresentacao = gameObject.AddComponent<ApresentacaoGansOffice>();
         apresentacao.caminhada = caminhada;
         apresentacao.costas = costas;
@@ -77,30 +83,47 @@ public class PrimeiroEnigma : MonoBehaviour
         if (apresentacao.Ativa)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) apresentacao.Pausar(!apresentacao.Pausada);
-            if (!apresentacao.Pausada && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)))
+            if (!apresentacao.Pausada && ConfirmarPressionado())
                 apresentacao.EncerrarVideo();
             return;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (enigma.Terminou) return;
-            if (calculadoraAberta) { calculadoraAberta = false; AtualizarMovimento(); return; }
-            if (bilhete) bilhete = false;
-            else pausado = !pausado;
-            AtualizarMovimento();
+            TratarEscape();
             return;
         }
         if ((bilhete || pausado) && !enigma.Terminou &&
-            (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)))
+            ConfirmarPressionado())
         {
-            bilhete = false;
-            pausado = false;
-            AtualizarMovimento();
+            Continuar();
             return;
         }
         if (pausado || bilhete || enigma.Terminou) return;
         if (calculadoraAberta) return;
         if (Input.GetKeyDown(KeyCode.E)) Interagir();
+    }
+
+    private static bool ConfirmarPressionado()
+    {
+        return Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space);
+    }
+
+    private void TratarEscape()
+    {
+        if (enigma.Terminou) return;
+        // Retomar primeiro preserva a calculadora e o bilhete abertos antes de Alt+Tab.
+        if (pausado) pausado = false;
+        else if (calculadoraAberta) calculadoraAberta = false;
+        else if (bilhete) bilhete = false;
+        else pausado = true;
+        AtualizarMovimento();
+    }
+
+    private void Continuar()
+    {
+        if (pausado) pausado = false;
+        else bilhete = false;
+        AtualizarMovimento();
     }
 
     private void LateUpdate()
@@ -206,7 +229,7 @@ public class PrimeiroEnigma : MonoBehaviour
 
     private void AtualizarMovimento()
     {
-        movimento.enabled = !pausado && !bilhete && !calculadoraAberta && !enigma.Terminou &&
+        movimento.enabled = isActiveAndEnabled && !pausado && !bilhete && !calculadoraAberta && !enigma.Terminou &&
             (apresentacao == null || !apresentacao.Ativa);
         if (apresentacao != null) apresentacao.Pausar(pausado);
         corpo.linearVelocity = Vector2.zero;
@@ -231,6 +254,7 @@ public class PrimeiroEnigma : MonoBehaviour
         if (!foco && movimento != null)
         {
             if (apresentacao != null && apresentacao.Ativa) { apresentacao.Pausar(true); return; }
+            if (enigma.Terminou) return;
             pausado = true;
             AtualizarMovimento();
         }
@@ -238,7 +262,14 @@ public class PrimeiroEnigma : MonoBehaviour
 
     private void OnDisable()
     {
-        if (movimento != null) movimento.enabled = true;
+        if (movimento != null) movimento.enabled = false;
+        if (corpo != null) corpo.linearVelocity = Vector2.zero;
+        if (apresentacao != null) apresentacao.Pausar(true);
+    }
+
+    private void OnEnable()
+    {
+        if (apresentacao != null) AtualizarMovimento();
     }
 
     private void PrepararEstilos()
@@ -294,11 +325,7 @@ public class PrimeiroEnigma : MonoBehaviour
             GUI.Label(mostrarBodel ? new Rect(370, 288, 500, 172) : new Rect(228, 288, 644, 172),
                 pausado ? "O escritório pode esperar. Continue quando quiser." : mensagem, texto);
             if (!enigma.Terminou && GUI.Button(new Rect(228, 468, 304, 52), "Continuar [Enter]", botao))
-            {
-                pausado = false;
-                bilhete = false;
-                AtualizarMovimento();
-            }
+                Continuar();
             if (GUI.Button(new Rect(554, 468, 318, 52), "Recomeçar enigma", botao)) Reiniciar();
         }
         if (calculadoraAberta && !pausado && !bilhete && !enigma.Terminou) DesenharCalculadora();
@@ -318,27 +345,31 @@ public class PrimeiroEnigma : MonoBehaviour
             if (GUI.Button(new Rect(228 + (i % 7) * 92, 354 + (i / 7) * 50, 84, 42), teclas[i].ToString(), botao) && resposta.Length < 5)
             { resposta += teclas[i]; apresentacao.Tecla(); }
         }
-        bool enviar = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return;
+        bool enviar = Event.current.type == EventType.KeyDown &&
+            (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.KeypadEnter);
         if (enviar) Event.current.Use();
         if (GUI.Button(new Rect(228, 466, 304, 48), "Confirmar [Enter]", botao) || enviar)
-        {
-            if (string.IsNullOrWhiteSpace(resposta)) return;
-            bool acertou = enigma.ResolverCalculadora(resposta);
-            calculadoraAberta = false;
-            if (acertou)
-            {
-                bilhete = false;
-                apresentacao.TocarFinal(() => MostrarBilhete("Bodel, o ascensorista: ‘Sair da caixa é o que move a humanidade. E se esse jogo fosse de verdade?’\n\nA temperatura voltou a 29 °C. Você escapou do escritório!"));
-                AtualizarMovimento();
-                return;
-            }
-            MostrarBilhete(
-                enigma.Terminou ? "O gato tem sete vidas e você tem três. O escritório congelou! Recomece e pense fora da caixa." :
-                "Ficou mais frio! Vidas restantes: " + enigma.Vidas + ". Volte à calculadora e tente separar os algarismos de 290.");
-        }
+            ConfirmarResposta();
         if (GUI.Button(new Rect(554, 466, 152, 48), "Limpar", botao)) resposta = string.Empty;
         if (GUI.Button(new Rect(718, 466, 154, 48), "Voltar [Esc]", botao))
         { calculadoraAberta = false; AtualizarMovimento(); }
+    }
+
+    private void ConfirmarResposta()
+    {
+        if (!calculadoraAberta || pausado || bilhete || enigma.Terminou || string.IsNullOrWhiteSpace(resposta)) return;
+        bool acertou = enigma.ResolverCalculadora(resposta);
+        calculadoraAberta = false;
+        if (acertou)
+        {
+            bilhete = false;
+            apresentacao.TocarFinal(() => MostrarBilhete("Bodel, o ascensorista: ‘Sair da caixa é o que move a humanidade. E se esse jogo fosse de verdade?’\n\nA temperatura voltou a 29 °C. Você escapou do escritório!"));
+            AtualizarMovimento();
+            return;
+        }
+        MostrarBilhete(
+            enigma.Terminou ? "O gato tem sete vidas e você tem três. O escritório congelou! Recomece e pense fora da caixa." :
+            "Ficou mais frio! Vidas restantes: " + enigma.Vidas + ". Volte à calculadora e tente separar os algarismos de 290.");
     }
 
     private static void Painel(Rect retangulo)
